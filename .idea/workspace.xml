@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef7871d6-e6b0-4f9d-9e62-74f9c1d21e85" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/classifiers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AdvancedMLProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AdvancedMLProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/rSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/rSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classifiers.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/classifiers.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classifiers.py" beforeDir="false" afterPath="$PROJECT_DIR$/classifiers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +99,7 @@
       <option name="presentableId" value="Default" />
       <updated>1581545574798</updated>
       <workItem from="1581545579592" duration="2715000" />
-      <workItem from="1589370175047" duration="4029000" />
+      <workItem from="1589370175047" duration="5384000" />
     </task>
     <servers />
   </component>
@@ -114,26 +111,26 @@
       <screen x="0" y="23" width="1792" height="1047" />
     </state>
     <state x="353" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1792.1047@0.23.1792.1047" timestamp="1589370816155" />
-    <state width="1710" height="270" key="GridCell.Tab.0.bottom" timestamp="1589372025395">
+    <state width="1710" height="270" key="GridCell.Tab.0.bottom" timestamp="1589375927119">
       <screen x="0" y="23" width="1792" height="1047" />
     </state>
     <state width="1710" height="270" key="GridCell.Tab.0.bottom/0.23.1792.1030@0.23.1792.1030" timestamp="1581546611669" />
-    <state width="1710" height="270" key="GridCell.Tab.0.bottom/0.23.1792.1047@0.23.1792.1047" timestamp="1589372025395" />
-    <state width="1710" height="270" key="GridCell.Tab.0.center" timestamp="1589372025395">
+    <state width="1710" height="270" key="GridCell.Tab.0.bottom/0.23.1792.1047@0.23.1792.1047" timestamp="1589375927119" />
+    <state width="1710" height="270" key="GridCell.Tab.0.center" timestamp="1589375927119">
       <screen x="0" y="23" width="1792" height="1047" />
     </state>
     <state width="1710" height="270" key="GridCell.Tab.0.center/0.23.1792.1030@0.23.1792.1030" timestamp="1581546611669" />
-    <state width="1710" height="270" key="GridCell.Tab.0.center/0.23.1792.1047@0.23.1792.1047" timestamp="1589372025395" />
-    <state width="1710" height="270" key="GridCell.Tab.0.left" timestamp="1589372025395">
+    <state width="1710" height="270" key="GridCell.Tab.0.center/0.23.1792.1047@0.23.1792.1047" timestamp="1589375927119" />
+    <state width="1710" height="270" key="GridCell.Tab.0.left" timestamp="1589375927118">
       <screen x="0" y="23" width="1792" height="1047" />
     </state>
     <state width="1710" height="270" key="GridCell.Tab.0.left/0.23.1792.1030@0.23.1792.1030" timestamp="1581546611668" />
-    <state width="1710" height="270" key="GridCell.Tab.0.left/0.23.1792.1047@0.23.1792.1047" timestamp="1589372025395" />
-    <state width="1710" height="270" key="GridCell.Tab.0.right" timestamp="1589372025395">
+    <state width="1710" height="270" key="GridCell.Tab.0.left/0.23.1792.1047@0.23.1792.1047" timestamp="1589375927118" />
+    <state width="1710" height="270" key="GridCell.Tab.0.right" timestamp="1589375927119">
       <screen x="0" y="23" width="1792" height="1047" />
     </state>
     <state width="1710" height="270" key="GridCell.Tab.0.right/0.23.1792.1030@0.23.1792.1030" timestamp="1581546611669" />
-    <state width="1710" height="270" key="GridCell.Tab.0.right/0.23.1792.1047@0.23.1792.1047" timestamp="1589372025395" />
+    <state width="1710" height="270" key="GridCell.Tab.0.right/0.23.1792.1047@0.23.1792.1047" timestamp="1589375927119" />
     <state x="390" y="162" key="SettingsEditor" timestamp="1589370992654">
       <screen x="0" y="23" width="1792" height="1047" />
     </state>
@@ -145,7 +142,7 @@
     <state x="566" y="354" key="com.intellij.ide.util.TipDialog/0.23.1792.1033@0.23.1792.1033" timestamp="1581545579560" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AdvancedMLProject$classifiers.coverage" NAME="classifiers Coverage Results" MODIFIED="1589372025388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AdvancedMLProject$classifiers.coverage" NAME="classifiers Coverage Results" MODIFIED="1589375927114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AdvancedMLProject$initexperiment.coverage" NAME="initexperiment Coverage Results" MODIFIED="1581546611660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

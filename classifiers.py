@@ -5,20 +5,27 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 from sklearn.gaussian_process import GaussianProcessClassifier
 from sklearn.gaussian_process.kernels import RBF
+from sklearn.metrics import classification_report
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 
-names = ["Nearest Neighbors", "Linear SVM", "RBF SVM", "Gaussian Process",
-         "Decision Tree", "Random Forest", "Neural Net", "AdaBoost",
-         "Naive Bayes", "QDA"]
+names = ["Nearest Neighbors",
+         "Linear SVM",
+         # "RBF SVM",
+         "Gaussian Process",
+         "Decision Tree",
+         "Random Forest",
+         "Neural Net",
+         "AdaBoost",
+         "Naive Bayes"]
 
 classifiers = [
     KNeighborsClassifier(3),
     SVC(kernel="linear", C=0.025),
-    SVC(gamma=2, C=1),
+    # SVC(gamma=2, C=1),
     GaussianProcessClassifier(1.0 * RBF(1.0)),
     DecisionTreeClassifier(max_depth=5),
     RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1),
@@ -54,9 +61,11 @@ for name, clf in zip(names, classifiers):
     clf.fit(X_train, y_train)
     train_score = clf.score(X_train, y_train)
     test_score = clf.score(X_test, y_test)
+    y_pred = clf.predict(X_test)
     r = [name]
     print(train_score)
     print(test_score)
+    print(classification_report(y_test.argmax(axis=1), y_pred.argmax(axis=1)))
     all_results.append(r)
 
 print(all_results)
