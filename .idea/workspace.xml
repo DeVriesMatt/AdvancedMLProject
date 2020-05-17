@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef7871d6-e6b0-4f9d-9e62-74f9c1d21e85" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/adasyn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/process_dataset.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/smote.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AdvancedMLProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AdvancedMLProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classifiers.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifiers.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classifiers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifiers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initexperiment.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/initexperiment.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initexperiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/initexperiment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/adasyn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adasyn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +131,7 @@
       <option name="presentableId" value="Default" />
       <updated>1581545574798</updated>
       <workItem from="1581545579592" duration="2715000" />
-      <workItem from="1589370175047" duration="12557000" />
+      <workItem from="1589370175047" duration="12801000" />
     </task>
     <servers />
   </component>
