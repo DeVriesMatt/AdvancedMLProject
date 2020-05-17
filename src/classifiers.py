@@ -33,8 +33,8 @@ classifiers = [
     AdaBoostClassifier(),
     GaussianNB()]
 
-train = pd.read_csv('./heartbeat/mitbih_train.csv', header=None)
-test = pd.read_csv('./heartbeat/mitbih_test.csv', header=None)
+train = pd.read_csv('../datasets/heartbeat/mitbih_train.csv', header=None)
+test = pd.read_csv('../datasets/heartbeat/mitbih_test.csv', header=None)
 
 print(train.shape)
 X_train = train.iloc[:, 0:186]
