@@ -41,10 +41,10 @@ results = "./datasets/results/"
 
 train_dir = []
 test_dir = []
-for train in os.listdir(matlab_train):
+for train in sorted(os.listdir(matlab_train)):
     train_dir.append(train)
 
-for test in os.listdir(matlab_test):
+for test in sorted(os.listdir(matlab_test)):
     test_dir.append(test)
 
 print(train_dir)
@@ -69,13 +69,13 @@ for dataset in range(len(train_dir)):
     for name, clf in zip(names, classifiers):
         print(name)
         clf.fit(X_train, y_train)
-        train_score = clf.score(X_train, y_train)
-        test_score = clf.score(X_test, y_test)
+        # train_score = clf.score(X_train, y_train)
+        # test_score = clf.score(X_test, y_test)
         y_pred = clf.predict(X_test)
         class_report = classification_report(y_test, y_pred)
         conf_mat_test = confusion_matrix(y_test, y_pred)
-        print(train_score)
-        print(test_score)
+        # print(train_score)
+        # print(test_score)
         print(class_report)
         report = pd.DataFrame(class_report).transpose()
         report.to_csv(results + 'report_' + name + test_dir[dataset])
