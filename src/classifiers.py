@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 from sklearn.gaussian_process import GaussianProcessClassifier
 from sklearn.gaussian_process.kernels import RBF
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
@@ -71,8 +71,7 @@ for name, clf in zip(names, classifiers):
     print(train_score)
     print(test_score)
     print(classification_report(y_test, y_pred))
-    # all_results.append(r)
 
-print(all_results)
+
 
 

@@ -11,24 +11,24 @@ oversampled = "./datasets/oversampled/"
 # List the datasets contained in heartbeats
 print(os.listdir(heart_path))
 
-# Import the train and test datsets
-train = pd.read_csv(matlab_path + "mitbih_train_without4.csv", header=None)
-train = train.iloc[1:]
+# # Import the train and test datsets
+# train = pd.read_csv(matlab_path + "mitbih_train_without4.csv", header=None)
+# train = train.iloc[1:]
 
-# Print the number of observations of each class
-train[187] = train[187].astype(int)
-equilibre = train[187].value_counts()
-print("The value counts for the training set before SMOTE:")
-print(equilibre)
-
-plt.figure(figsize=(20, 10))
-my_circle = plt.Circle((0, 0), 0.7, color='white')
-plt.pie(equilibre, labels=['N', 'V', 'S', 'F'],
-        colors=['red', 'green', 'blue', 'skyblue'],
-        autopct='%1.1f%%')
-p = plt.gcf()
-p.gca().add_artist(my_circle)
-plt.show()
+# # Print the number of observations of each class
+# train[187] = train[187].astype(int)
+# equilibre = train[187].value_counts()
+# print("The value counts for the training set before SMOTE:")
+# print(equilibre)
+#
+# plt.figure(figsize=(20, 10))
+# my_circle = plt.Circle((0, 0), 0.7, color='white')
+# plt.pie(equilibre, labels=['N', 'V', 'S', 'F'],
+#         colors=['red', 'green', 'blue', 'skyblue'],
+#         autopct='%1.1f%%')
+# p = plt.gcf()
+# p.gca().add_artist(my_circle)
+# plt.show()
 
 # Oversample the training sets in matlab folder
 for filename in os.listdir(matlab_path):
@@ -41,15 +41,15 @@ for filename in os.listdir(matlab_path):
         # Print the number of observations of each class
         train[(train.shape[1]-1)] = train[(train.shape[1]-1)].astype(int)
         equilibre = train[(train.shape[1]-1)].value_counts()
-        print("The value counts for the training set before SMOTE:")
+        print("The value counts for the training set before oversampling:")
         print(equilibre)
 
         # Setting up the variables
         target_train = train[(train.shape[1]-1)]
-        y_train = to_categorical(target_train)
+        y_train = target_train
         print("Y train shape: {}".format(y_train.shape))
 
-        X_train = train.iloc[:, :(train.shape[1]-2)].values
+        X_train = train.iloc[:, :(train.shape[1]-1)].values
         print("X train shape: {}".format(X_train.shape))
 
         # Perform SMOTE
@@ -61,6 +61,7 @@ for filename in os.listdir(matlab_path):
         print("The value counts for the training set after SMOTE:")
         print(y_res_pd.sum(axis=0))
         df = pd.concat([X_res_pd, y_res_pd], axis=1)
+        print(df.shape)
         df.to_csv(oversampled + "smote_" + filename)
 
         # Perform Adasyn
@@ -69,7 +70,7 @@ for filename in os.listdir(matlab_path):
 
         X_res_pd_ada = pd.DataFrame(X_res_ada)
         y_res_pd_ada = pd.DataFrame(y_res_ada)
-        print("The value counts for the whole dataset after ADASYN:")
+        print("The value counts for the training dataset after ADASYN:")
         print(y_res_pd_ada.sum(axis=0))
         df = pd.concat([X_res_pd, y_res_pd], axis=1)
         df.to_csv(oversampled + "adasyn_" + filename)
