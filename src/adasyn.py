@@ -56,17 +56,21 @@ for filename in os.listdir(matlab_path):
         sm = SMOTE(random_state=42)
         X_res, y_res = sm.fit_resample(X_train, y_train)
 
+        X_res_pd = pd.DataFrame(X_res)
         y_res_pd = pd.DataFrame(y_res)
         print("The value counts for the training set after SMOTE:")
         print(y_res_pd.sum(axis=0))
-        y_res_pd.to_csv(oversampled + "smote_" + filename)
+        df = pd.concat([X_res_pd, y_res_pd], axis=1)
+        df.to_csv(oversampled + "smote_" + filename)
 
         # Perform Adasyn
         ada = ADASYN(random_state=42)
         X_res_ada, y_res_ada = ada.fit_resample(X_train, y_train)
 
+        X_res_pd_ada = pd.DataFrame(X_res_ada)
         y_res_pd_ada = pd.DataFrame(y_res_ada)
         print("The value counts for the whole dataset after ADASYN:")
         print(y_res_pd_ada.sum(axis=0))
-        y_res_pd_ada.to_csv(oversampled + "adasyn_" + filename)
+        df = pd.concat([X_res_pd, y_res_pd], axis=1)
+        df.to_csv(oversampled + "adasyn_" + filename)
 
