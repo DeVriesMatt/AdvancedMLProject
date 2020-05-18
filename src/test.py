@@ -11,15 +11,15 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 
-names = ["Nearest Neighbors",
-         "Linear SVM",
+names = ["NearestNeighbors",
+         "LinearSVM",
          # "RBF SVM",
          # "Gaussian Process",
-         "Decision Tree",
-         "Random Forest",
-         "Neural Net",
+         "DecisionTree",
+         "RandomForest",
+         "NeuralNet",
          "AdaBoost",
-         "Naive Bayes"]
+         "NaiveBayes"]
 
 classifiers = [
     KNeighborsClassifier(3),
@@ -36,7 +36,7 @@ heart_path = "./datasets/heartbeat/"
 matlab_train = "./datasets/datasets_without_augmentation/matlab/train/"
 matlab_test = "./datasets/datasets_without_augmentation/matlab/test/"
 oversampled = "./datasets/oversampled/"
-results = "./datasets/results/"
+results = "./results/"
 
 
 train_dir = []
@@ -72,12 +72,12 @@ for dataset in range(len(train_dir)):
         # train_score = clf.score(X_train, y_train)
         # test_score = clf.score(X_test, y_test)
         y_pred = clf.predict(X_test)
-        class_report = classification_report(y_test, y_pred)
+        class_report = classification_report(y_test, y_pred, output_dict=True)
         conf_mat_test = confusion_matrix(y_test, y_pred)
         # print(train_score)
         # print(test_score)
-        print(class_report)
+        # print(class_report)
         report = pd.DataFrame(class_report).transpose()
-        report.to_csv(results + 'report_' + name + test_dir[dataset])
+        report.to_csv(results + 'report_' + name + "_" + test_dir[dataset])
         cmat = pd.DataFrame(conf_mat_test)
-        cmat.to_csv(results + 'confus_' + name + test_dir[dataset])
+        cmat.to_csv(results + 'confus_' + name + "_" + test_dir[dataset])
