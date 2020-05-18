@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 from sklearn.gaussian_process import GaussianProcessClassifier
 from sklearn.gaussian_process.kernels import RBF
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, accuracy_score
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
@@ -33,8 +33,13 @@ classifiers = [
     AdaBoostClassifier(),
     GaussianNB()]
 
-train = pd.read_csv('../datasets/heartbeat/mitbih_train.csv', header=None)
-test = pd.read_csv('../datasets/heartbeat/mitbih_test.csv', header=None)
+datapath = "./datasets/datasets_without_augmentation/matlab"
+train = pd.read_csv(datapath + "/train/mitbih_train_without4.csv", header=None)
+test = pd.read_csv(datapath + "/test/mitbih_test_without4.csv", header=None)
+
+train = train.iloc[1:].astype(float)
+test = test.iloc[1:].astype(float)
+print(train.head())
 
 print(train.shape)
 X_train = train.iloc[:, 0:186]
@@ -65,8 +70,8 @@ for name, clf in zip(names, classifiers):
     r = [name]
     print(train_score)
     print(test_score)
-    print(classification_report(y_test.argmax(axis=1), y_pred.argmax(axis=1)))
-    all_results.append(r)
+    print(classification_report(y_test, y_pred))
+    # all_results.append(r)
 
 print(all_results)
 
