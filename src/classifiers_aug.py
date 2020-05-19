@@ -11,8 +11,6 @@ from sklearn.tree import DecisionTreeClassifier
 
 names = ["NearestNeighbors",
          "LinearSVM",
-         # "RBF SVM",
-         # "Gaussian Process",
          "DecisionTree",
          "RandomForest",
          "NeuralNet",
@@ -21,7 +19,7 @@ names = ["NearestNeighbors",
 
 classifiers = [
     KNeighborsClassifier(3),
-    SVC(kernel="linear", C=0.025),
+    SVC(kernel="linear", C=0.025, verbose=True),
     # SVC(gamma=2, C=1),
     # GaussianProcessClassifier(1.0 * RBF(1.0)),
     DecisionTreeClassifier(max_depth=5),
@@ -49,7 +47,7 @@ print(train_dir)
 print(test_dir)
 
 
-for dataset in range(len(test_dir)):
+for dataset in range(3, len(test_dir)):
 
     train = pd.read_csv(oversampled + train_dir[dataset], header=None)
     test = pd.read_csv(matlab_test + test_dir[dataset], header=None)
@@ -96,6 +94,7 @@ for dataset in range(len(test_dir), len(train_dir)):
         clf.fit(X_train, y_train)
         y_pred = clf.predict(X_test)
         class_report = classification_report(y_test, y_pred, output_dict=True)
+        print(class_report)
         conf_mat_test = confusion_matrix(y_test, y_pred)
         report = pd.DataFrame(class_report).transpose()
         report.to_csv(results + 'report_' + name + "_" + train_dir[dataset])
