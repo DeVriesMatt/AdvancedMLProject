@@ -23,7 +23,7 @@ class EstimatorSelectionHelper:
         self.keys = models.keys()
         self.grid_searches = {}
 
-    def fit(self, X, y, cv=3, n_jobs=3, verbose=1, scoring=None, refit=True):
+    def fit(self, X, y, cv=3, n_jobs=3, verbose=3, scoring=None, refit=True):
         for key in self.keys:
             print("Running GridSearchCV for %s." % key)
             model = self.models[key]
@@ -91,7 +91,7 @@ heart_path = "./datasets/heartbeat/"
 matlab_train = "./datasets/datasets_without_augmentation/matlab/train/"
 matlab_test = "./datasets/datasets_without_augmentation/matlab/test/"
 oversampled = "./datasets/oversampled/"
-results = "./results/"
+results = "./results/grid/"
 
 train_dir = []
 train_ada = []
@@ -107,7 +107,8 @@ for train in sorted(os.listdir(oversampled)):
         train_smote.append(train)
 
 for test in sorted(os.listdir(matlab_test)):
-    test_dir.append(test)
+    if 'test' in test:
+        test_dir.append(test)
 
 print(train_dir)
 print(train_ada)
@@ -115,34 +116,34 @@ print(train_smote)
 print(test_dir)
 
 # Adasyn grid search
-for dataset in range(len(train_ada)):
-
-    train = pd.read_csv(oversampled + train_ada[dataset], header=None)
-    test = pd.read_csv(matlab_test + test_dir[dataset], header=None)
-
-    train = train.iloc[1:, 1:].astype(float)
-    test = test.iloc[1:].astype(float)
-
-    X_train = train.iloc[:, 0:(train.shape[1]-1)]
-    y_train = train.iloc[:, train.shape[1]-1]
-
-    X_test = test.iloc[:, 0:(test.shape[1]-1)]
-    y_test = test.iloc[:, test.shape[1]-1]
-
-    helper1 = EstimatorSelectionHelper(models, params)
-    helper1.fit(X_train, y_train, scoring='f1', n_jobs=2)
-    score_summary = helper1.score_summary(sort_by='max_score')
-    score_summary_pd = pd.DataFrame(score_summary).to_csv(results) # TODO: change this
-
-    for i in models.keys():
-        y_pred = helper1.grid_searches[i].predict(X_test)
-        class_report = classification_report(y_test, y_pred, output_dict=True)
-        print(class_report)
-        conf_mat_test = confusion_matrix(y_test, y_pred)
-        report = pd.DataFrame(class_report).transpose()
-        report.to_csv(results + 'report_' + i + "_" + train_ada[dataset])
-        cmat = pd.DataFrame(conf_mat_test)
-        cmat.to_csv(results + 'confus_' + i + "_" + train_ada[dataset])
+# for dataset in range(len(train_ada)):
+#
+#     train = pd.read_csv(oversampled + train_ada[dataset], header=None)
+#     test = pd.read_csv(matlab_test + test_dir[dataset], header=None)
+#
+#     train = train.iloc[1:, 1:].astype(float)
+#     test = test.iloc[1:].astype(float)
+#
+#     X_train = train.iloc[:, 0:(train.shape[1]-1)]
+#     y_train = train.iloc[:, train.shape[1]-1]
+#
+#     X_test = test.iloc[:, 0:(test.shape[1]-1)]
+#     y_test = test.iloc[:, test.shape[1]-1]
+#
+#     helper1 = EstimatorSelectionHelper(models, params)
+#     helper1.fit(X_train, y_train, scoring='f1_micro', n_jobs=-1) # -1 all processors
+#     score_summary = helper1.score_summary(sort_by='max_score')
+#     score_summary_pd = pd.DataFrame(score_summary).to_csv(results + train_ada[dataset]) # TODO: change this
+#
+#     for i in models.keys():
+#         y_pred = helper1.grid_searches[i].predict(X_test)
+#         class_report = classification_report(y_test, y_pred, output_dict=True)
+#         print(class_report)
+#         conf_mat_test = confusion_matrix(y_test, y_pred)
+#         report = pd.DataFrame(class_report).transpose()
+#         report.to_csv(results + 'report_' + i + "_" + train_ada[dataset])
+#         cmat = pd.DataFrame(conf_mat_test)
+#         cmat.to_csv(results + 'confus_' + i + "_" + train_ada[dataset])
 
 
 # Smote
@@ -161,9 +162,9 @@ for dataset in range(len(train_smote)):
     y_test = test.iloc[:, test.shape[1] - 1]
 
     helper1 = EstimatorSelectionHelper(models, params)
-    helper1.fit(X_train, y_train, scoring='f1', n_jobs=2)
+    helper1.fit(X_train, y_train, scoring='f1_micro', n_jobs=-1) # -1 all processors
     score_summary = helper1.score_summary(sort_by='max_score')
-    score_summary_pd = pd.DataFrame(score_summary).to_csv(results) # TODO
+    score_summary_pd = pd.DataFrame(score_summary).to_csv(results + train_smote[dataset]) # TODO
 
     for i in models.keys():
         y_pred = helper1.grid_searches[i].predict(X_test)
