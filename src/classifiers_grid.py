@@ -162,7 +162,7 @@ for dataset in range(len(train_smote)):
     y_test = test.iloc[:, test.shape[1] - 1]
 
     helper1 = EstimatorSelectionHelper(models, params)
-    helper1.fit(X_train, y_train, scoring='f1_micro', n_jobs=-1) # -1 all processors
+    helper1.fit(X_train, y_train, scoring='f1_macro', n_jobs=-1) # -1 all processors
     score_summary = helper1.score_summary(sort_by='max_score')
     score_summary_pd = pd.DataFrame(score_summary).to_csv(results + train_smote[dataset]) # TODO
 
